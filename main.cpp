@@ -22,7 +22,7 @@ public:
             cout << "Matrix sizes must be greather than or equal to 1." << endl;
         }
     }
-    Matrix(const Matrix& obj) {
+    Matrix(const Matrix<T>& obj) {
         this->row = obj.row;
         this->column = obj.column;
         this->init();
@@ -32,7 +32,7 @@ public:
             }
         }
     }
-    Matrix(Matrix&& obj) {
+    Matrix(Matrix<T>&& obj) {
         cout << "Matrix move constructor" << endl;
         this->row = obj.row;
         this->column = obj.column;
@@ -42,7 +42,7 @@ public:
         obj.column = 0;
     }
 
-    Matrix& operator = (const Matrix& obj) {
+    Matrix<T>& operator = (const Matrix<T>& obj) {
         if (this != &obj) {
             for (int i = 0; i < this->row; i++) {
                 delete[] this->matrix[i];
@@ -62,7 +62,7 @@ public:
         return *this;
     }
 
-     Matrix& operator = (Matrix&& obj) {
+     Matrix<T>& operator = (Matrix<T>&& obj) {
          cout << "Matrix operator move assignment" << endl;
          if (this != &obj) {
             for (int i = 0; i < this->row; i++) {
